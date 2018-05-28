@@ -26,6 +26,7 @@
     "webpack-merge": "^4.1.2"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "file-loader": "^1.1.11",
     "html-withimg-loader": "^0.1.16"
   }
