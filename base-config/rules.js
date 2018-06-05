@@ -44,4 +44,4 @@ exports.rules= [
       'file-loader'
     ]
   }
-]
+];

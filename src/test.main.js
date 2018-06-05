@@ -2,10 +2,6 @@
 import "./scss/reset.scss";
 import "./scss/index.scss";
 import $ from 'jquery'
-// import _ from 'lodash'
-// console.log(
-//     _.join(['test', '测试', 'loaded!'], ' ')
-// );
 
 let test = $("#btn");
 test.on("click", function () {

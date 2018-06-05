@@ -2,59 +2,47 @@ const path = require("path");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const rules = require('../base-config/rules').rules;
-// const config = require("../config");
-/*
-const configs = require("../config");
-const chunks = configs.chunks;
-const config = configs.config;
-
+// 配置入口文件和plugins
+const projectConfig = require('../project-config');
+const config = projectConfig.config;
 let entry = {};
-
-if (Object.keys(chunks).length) {
-  entry.push(chunks);
-}
-
 let plugins = [
   new CleanWebpackPlugin(["dist"], {
     root: path.resolve(__dirname, "../")
   })
 ];
-
 for (let i = 0; i < config.length; i++) {
+  // entry
   let item = config[i];
-  entry[item["entryName"]] = item["entryPath"];
-  let baseConfig = {
-    filename: null,
-    template: null,
-    inject: true,
-    chunks: null
+  entry[item['entryName']] = item['entryPath'];
+  // plugins
+  let pluginItem = {
+    filename: item['filename'],
+    template: item['template'],
+    inject: item['inject'] ? item['inject'] : true,
+    chunks: item['chunks']
   };
-  for (let key in item) {
-    baseConfig[key] = item[key];
-  }
-  // baseConfig['chunks'] = item['entryName'];
-  plugins.push(new HtmlWebpackPlugin(item));
+  plugins.push(new HtmlWebpackPlugin(pluginItem));
 }
-*/
+
+// 配置依赖和第三方库
+let cacheGroupsConfig = projectConfig.cacheGroupsConfig;
+let cacheGroups = {};
+for (let i = 0; i < cacheGroupsConfig.length; i++) {
+  let item = cacheGroupsConfig[i];
+  let cacheGroupsItem = {
+    name: item['name'],
+    chunks: item['chunks'] ? item['chunks'] : 'initial',
+    minChunks: item['minChunks'] ? item['minChunks'] : 2
+  };
+  cacheGroups[item['name']] = cacheGroupsItem;
+};
+
 module.exports = {
-  entry: {
-    index: path.resolve(__dirname, '../src/index.main.js'),
-    test: path.resolve(__dirname, '../src/test.main.js')
-  },
+  entry,
   optimization: {
     splitChunks: {
-      cacheGroups: {
-        jquery: {
-          name: "jquery",
-          chunks: "initial",
-          minChunks: 2
-        },
-        lodash: {
-          name: "lodash",
-          chunks: "initial",
-          minChunks: 2
-        }
-      }
+      cacheGroups
     }
   },
   output: {
@@ -62,23 +50,7 @@ module.exports = {
     chunkFilename: "js/[chunkhash].bundle.js",
     path: path.resolve(__dirname, "../", "dist")
   },
-  plugins: [
-    new CleanWebpackPlugin(["dist"], {
-      root: path.resolve(__dirname, "../")
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: path.resolve(__dirname, '../src/index.html'),
-      inject: true,
-      chunks: ['index', 'lodash']
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'test.html',
-      template: path.resolve(__dirname, '../src/test.html'),
-      inject: true,
-      chunks: ['test', 'jquery']
-    })
-  ],
+  plugins,
   module: {
     rules
   }
