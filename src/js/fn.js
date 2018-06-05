@@ -1,7 +1,7 @@
-exports.fn = function () {
-    console.log("fnfn");
+export function fnOne () {
+    console.log("fnOne");
 }
 
-exports.fn2 = function () {
-    console.log("fn2fn2");
+export function fnTwo () {
+    console.log("fnTwo");
 }

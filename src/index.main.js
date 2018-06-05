@@ -1,10 +1,17 @@
 // 首页的入口文件
 import "./scss/reset.scss";
 import "./scss/index.scss";
-import "./js/home";
+// import $ from 'jquery'
+import _ from 'lodash'
 
-import axios from 'axios'
-axios.get('/index/recommend.json')
-    .then((res) => {
-      console.log('跨域测试：', res.data);
-    })
+// let btn = $("#btn");
+//
+// btn.on("click", function () {
+//   alert('im home.js!');
+// });
+
+console.log(
+    _.join(['index', '测试', 'loaded!'], ' ')
+);
+// console.log(process.env.NODE_ENV); // development or production
+

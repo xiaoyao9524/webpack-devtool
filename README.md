@@ -4,10 +4,10 @@
 
 ```
 # 1、 安装依赖
-npm install
+npm install or yarn install
 
 # 2、 开发
-npm run dev， 默认监听8080，注意：默认路径为：http://localhost:8080/index.html,如果出险"Cannot GET /a.html"，请检查有没有index.html。
+npm run dev， 默认监听8080，注意：默认路径为：http://localhost:8080/index.html,如果出现"Cannot GET /xxx.html"，这很可能是没有index.html导致的。
 
 # 3、 打包
 npm run build，默认在主目录下"dist"文件夹。
