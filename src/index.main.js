@@ -3,6 +3,7 @@ import "./reset.scss";
 import "./index.scss";
 import $ from 'jquery';
 import _ from 'lodash';
+import axios from 'axios';
 
 var app = require('./index.art');
 var html = app({
@@ -21,5 +22,9 @@ console.log(
 );
 console.log('当前环境', process.env.NODE_ENV); // development or production
 
+axios.get('/index/recommend.json')
+    .then((res) => {
+      console.log('跨域测试：', res.data);
+    })
 
 
