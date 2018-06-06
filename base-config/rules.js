@@ -43,5 +43,9 @@ exports.rules= [
     use: [
       'file-loader'
     ]
+  },
+  {
+    test: /\.art$/,
+    loader: "art-template-loader"
   }
 ];

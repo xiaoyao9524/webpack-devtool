@@ -1,8 +1,14 @@
 // 首页的入口文件
-import "./scss/reset.scss";
-import "./scss/index.scss";
+import "./reset.scss";
+import "./index.scss";
 import $ from 'jquery';
 import _ from 'lodash';
+
+var app = require('./index.art');
+var html = app({
+  testMsg: '测试模板引擎消息'
+});
+document.getElementById('app').innerHTML = html;
 
 let btn = $("#btn");
 
@@ -14,4 +20,6 @@ console.log(
     _.join(['index', '测试', 'lodash'], ' ')
 );
 console.log('当前环境', process.env.NODE_ENV); // development or production
+
+
 

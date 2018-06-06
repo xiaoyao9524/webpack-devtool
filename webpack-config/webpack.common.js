@@ -2,6 +2,7 @@ const path = require("path");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const rules = require('../base-config/rules').rules;
+
 // 配置入口文件和plugins
 const projectConfig = require('../project-config');
 const config = projectConfig.config;
@@ -25,24 +26,25 @@ for (let i = 0; i < config.length; i++) {
   plugins.push(new HtmlWebpackPlugin(pluginItem));
 }
 
-// 配置依赖和第三方库
-let cacheGroupsConfig = projectConfig.cacheGroupsConfig;
-let cacheGroups = {};
-for (let i = 0; i < cacheGroupsConfig.length; i++) {
-  let item = cacheGroupsConfig[i];
-  let cacheGroupsItem = {
-    name: item['name'],
-    chunks: item['chunks'] ? item['chunks'] : 'initial',
-    minChunks: item['minChunks'] ? item['minChunks'] : 2
-  };
-  cacheGroups[item['name']] = cacheGroupsItem;
-};
-
 module.exports = {
   entry,
   optimization: {
     splitChunks: {
-      cacheGroups
+      cacheGroups: {
+        common: {
+          name: 'common',
+          priority: 10,
+          chunks: 'initial',
+          minChunks: 2
+        },
+        styles: {
+          name: 'styles',
+          test: /\.css$/,
+          chunks: 'all',
+          minChunks: 2,
+          enforce: true
+        }
+      }
     }
   },
   output: {
