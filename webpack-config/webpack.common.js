@@ -36,13 +36,6 @@ module.exports = {
           priority: 10,
           chunks: 'initial',
           minChunks: 2
-        },
-        styles: {
-          name: 'styles',
-          test: /\.css$/,
-          chunks: 'all',
-          minChunks: 2,
-          enforce: true
         }
       }
     }
