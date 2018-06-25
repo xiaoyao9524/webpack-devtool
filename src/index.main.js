@@ -1,3 +1,9 @@
+if (process.env.NODE_ENV === 'development') {
+  let VConsole = require('vConsole');
+  let vConsole = new VConsole();
+  console.log('Hello world', vConsole);
+}
+
 // 测试Vue
 import Vue from 'vue'
 import App from './app.vue'
@@ -39,6 +45,9 @@ console.log('当前环境', process.env.NODE_ENV); // development or production
 axios.get('/index/recommend.json')
     .then((res) => {
       console.log('跨域测试：', res.data);
+    })
+    .catch((err) => {
+      console.log('跨域测试失败，请确认当前是否在开发环境：', err)
     });
 
 

@@ -5,4 +5,4 @@ exports.api = [
     path: '/index' // ,
     // changeOrigin: true // 不传默认为true
   }
-]
+];
