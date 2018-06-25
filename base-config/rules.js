@@ -1,3 +1,4 @@
+
 exports.rules= [
   {
     test: /\.(htm|html)$/i,

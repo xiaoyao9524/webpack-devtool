@@ -7,4 +7,4 @@
 <h3>测试图片引入(img)</h3>
 <img class="img-test" src="./a.jpg" alt="">
 <h3>测试背景图片的引入(background)</h3>
-<section class="bg-test"></section>
+<section class="bg-test">这是一张背景图</section>
