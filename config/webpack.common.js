@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 // 配置入口文件和plugins
-const projectConfig = require('../project-config');
+const projectConfig = require('../page-config');
 const config = projectConfig.config;
 let entry = {};
 let plugins = [
@@ -42,8 +42,8 @@ module.exports = {
     }
   },
   output: {
-    filename: "js/[chunkhash].bundle.js",
-    chunkFilename: "js/[chunkhash].bundle.js",
+    filename: "static/js/[chunkhash].bundle.js",
+    chunkFilename: "static/js/[chunkhash].bundle.js",
     path: path.resolve(__dirname, "../", "dist")
   },
   plugins,
@@ -90,7 +90,8 @@ module.exports = {
             loader: "url-loader",
             options: {
               limit: 10000,
-              name: 'img/[name].[hash:7].[ext]'
+              name: '[hash:7].[ext]',
+              outputPath: 'static/img/'
             }
           }
         ]
@@ -98,7 +99,14 @@ module.exports = {
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         use: [
-          'file-loader'
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10000,
+              name: '[hash:7].[ext]',
+              outputPath: 'static/font/'
+            }
+          }
         ]
       },
       {
@@ -107,5 +115,9 @@ module.exports = {
       }
     ]
   },
-  resolve: { alias: { 'vue$': 'vue/dist/vue.common.js' } }
+  resolve: {
+    alias: {
+      'vue$': 'vue/dist/vue.common.js'
+    }
+  }
 };

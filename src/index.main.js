@@ -1,7 +1,6 @@
 if (process.env.NODE_ENV === 'development') {
   let VConsole = require('vConsole');
-  let vConsole = new VConsole();
-  console.log('Hello world', vConsole);
+  new VConsole();
 }
 
 // 测试Vue

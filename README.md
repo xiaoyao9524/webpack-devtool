@@ -13,7 +13,7 @@ npm run dev， 默认监听8080，注意：默认路径为：http://localhost:80
 npm run build，默认在主目录下"dist"文件夹。
 ```
 # 增加页面：
-    可直接在根目录下project-config.js中增加一项。
+    可直接在根目录下page-config.js中增加一项。
 # 跨域调试
     具体配置项根据根目录下api.js修改
 # 增加功能：
@@ -22,4 +22,4 @@ npm run build，默认在主目录下"dist"文件夹。
 # 添加对Vue的支持
     现在支持vue单文件组件
 # 添加开发环境的VConsole
-    方便调试
+    方便移动端调试
