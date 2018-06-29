@@ -1,6 +1,5 @@
 <h1>这是首页</h1>
 <p>本页使用了scss</p>
-<p>字体测试：<span style="font-family: 'huawenxingkai'">华文行楷</span></p>
 <p class="test-art-template-message">{{testMsg}}</p>
 <p class="test-style">scss测试（如果此处为红色则为正常，否则请检查node-sass是否安装成功）</p>
 <button id="btn">测试js</button>
