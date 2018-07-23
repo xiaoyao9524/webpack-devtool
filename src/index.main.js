@@ -15,6 +15,28 @@ new Vue({
   template: '<App/>'
 });
 
+// 测试react
+import React, {Component} from 'react'
+import ReactDOM from 'react-dom'
+class TestReact extends Component {
+  render () {
+    return (
+        <div>
+          Hello React!!!
+        </div>
+    )
+  }
+}
+class Hello extends Component {
+  render () {
+    return (
+        <div>
+          <TestReact/>
+        </div>
+    )
+  }
+}
+ReactDOM.render(<Hello/>, document.getElementById('root'))
 
 // 测试其它部分
 // 首页的入口文件

@@ -23,3 +23,5 @@ npm run build，默认在主目录下"dist"文件夹。
     现在支持vue单文件组件
 # 添加开发环境的VConsole
     方便移动端调试
+# 添加自动增加css前缀
+# 增加React支持

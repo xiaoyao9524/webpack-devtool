@@ -62,7 +62,7 @@ module.exports = {
         use: ['vue-style-loader', "style-loader", "css-loader"]
       },
       {
-        test: /\.js$/,
+        test: [/\.jsx$/, /\.js$/],
         exclude: /node_modules/,
         loader: "babel-loader"
       },
