@@ -1,7 +1,7 @@
-if (process.env.NODE_ENV === 'development') {
-  let VConsole = require('vConsole');
-  new VConsole();
-}
+// if (process.env.NODE_ENV === 'development') {
+//   let VConsole = require('vConsole');
+//   new VConsole();
+// }
 
 // 测试Vue
 import Vue from 'vue'

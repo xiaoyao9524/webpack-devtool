@@ -13,9 +13,9 @@ npm run dev， 默认监听8080，注意：默认路径为：http://localhost:80
 npm run build，默认在主目录下"dist"文件夹。
 ```
 # 增加页面：
-    可直接在根目录下page-config.js中增加一项。
+    可直接在根目录下'config.js'中'pageConfig'中增加一项。
 # 跨域调试
-    具体配置项根据根目录下api.js修改
+    具体配置项参考根目录下'config.js'中'proxy'选项
 # 增加功能：
     1、第三方库分离
     2、配置优化
@@ -25,3 +25,7 @@ npm run build，默认在主目录下"dist"文件夹。
     方便移动端调试
 # 添加自动增加css前缀
 # 增加React支持
+# 增加模块热替换
+# 优化配置
+    现在都在根目录下config.js中直接修改
+# 美化控制台输出信息

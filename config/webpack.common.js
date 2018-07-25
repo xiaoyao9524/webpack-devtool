@@ -4,8 +4,8 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 // 配置入口文件和plugins
-const projectConfig = require('../page-config');
-const config = projectConfig.config;
+const projectConfig = require('../config');
+const config = projectConfig.config.pageConfig;
 let entry = {};
 let plugins = [
   new VueLoaderPlugin(),
