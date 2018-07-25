@@ -55,7 +55,7 @@ document.getElementById('test').innerHTML = html;
 let btn = $("#btn");
 
 btn.on("click", function () {
-  alert('im home.js!');
+  alert('im home.js!!');
 });
 
 console.log(

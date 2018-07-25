@@ -1,5 +1,7 @@
 const merge = require("webpack-merge");
 const common = require("./webpack.common.js");
+const webpack = require('webpack');
+
 let api = require('../api').api;
 let proxy = {};
 for (let i = 0; i < api.length; i++) {
@@ -16,6 +18,11 @@ module.exports = merge(common, {
     host: 'localhost',
     port: 8080,
     proxy,
-    contentBase: "./dist"
-  }
+    contentBase: "./dist",
+    hot: true
+  } ,
+  plugins: [
+    new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin()
+  ]
 });

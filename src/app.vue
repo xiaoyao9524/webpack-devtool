@@ -30,7 +30,7 @@
       height: 50px;
     }
     h1 {
-      color: palegreen;
+      color: green;
     }
   }
 </style>

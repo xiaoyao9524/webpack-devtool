@@ -42,8 +42,8 @@ module.exports = {
     }
   },
   output: {
-    filename: "static/js/[chunkhash].bundle.js",
-    chunkFilename: "static/js/[chunkhash].bundle.js",
+    filename: "static/js/[name].[hash].bundle.js",
+    chunkFilename: "static/js/[name].[hash].bundle.js",
     path: path.resolve(__dirname, "../", "dist")
   },
   plugins,

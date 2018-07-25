@@ -15,7 +15,7 @@ exports.config = [
     filename: "index.html",
     template: "./src/index.html",
     chunks: ['index', 'common']
-  },
+  } ,
   {
     entryName: "test",
     entryPath: "./src/test.main.js",
