@@ -12,7 +12,7 @@
     name: "app",
     data () {
       return {
-        msg: '测试信息'
+        msg: '测试信息111'
       }
     },
     methods: {
