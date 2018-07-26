@@ -1,13 +1,13 @@
 {
-  "name": "{{name}}",
+  "name": "vue-vue-router-template",
   "version": "1.0.0",
-  "description": "{{description}}",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --config config/webpack.dev.js",
     "build": "webpack --config config/webpack.prod.js"
   },
-  "author": "{{author}}",
+  "author": "",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -36,6 +36,7 @@
     "vconsole": "^3.2.0",
     "vue": "^2.5.16",
     "vue-loader": "^15.2.4",
+    "vue-router": "^3.0.1",
     "vue-template-compiler": "^2.5.16"
   }
 }
