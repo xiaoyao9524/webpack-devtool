@@ -20,13 +20,6 @@ exports.config = {
       filename: "index.html",
       template: "./src/index.html",
       chunks: ['index', 'common']
-    } ,
-    {
-      entryName: "test",
-      entryPath: "./src/test.main.js",
-      filename: "test.html",
-      template: "./src/test.html",
-      chunks: ['test', 'common']
     }
   ],
   proxy: [
