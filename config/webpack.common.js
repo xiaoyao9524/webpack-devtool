@@ -1,14 +1,11 @@
 const path = require("path");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
-
 // 配置入口文件和plugins
 const projectConfig = require('../config');
 const config = projectConfig.config.pageConfig;
 let entry = {};
 let plugins = [
-  new VueLoaderPlugin(),
   new CleanWebpackPlugin(["dist"], {
     root: path.resolve(__dirname, "../")
   })
@@ -19,9 +16,10 @@ for (let i = 0; i < config.length; i++) {
   entry[item['entryName']] = item['entryPath'];
   // plugins
   let pluginItem = {
+    alwaysWriteToDisk: true,
     filename: item['filename'],
     template: item['template'],
-    inject: item['inject'] ? item['inject'] : true,
+    inject: item['inject'] || true,
     chunks: item['chunks']
   };
   plugins.push(new HtmlWebpackPlugin(pluginItem));
@@ -50,28 +48,21 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.vue$/,
-        loader: 'vue-loader'
-      },
-      {
         test: /\.(htm|html)$/i,
         loader: 'html-withimg-loader'
       },
       {
         test: /\.css$/,
-        use: ['vue-style-loader', "style-loader", "css-loader"]
+        use: ["style-loader", "css-loader"]
       },
       {
-        test: [/\.jsx$/, /\.js$/],
+        test: [/\.js$/],
         exclude: /node_modules/,
         loader: "babel-loader"
       },
       {
         test: /\.scss$/,
         use: [
-          {
-            loader: 'vue-style-loader'
-          },
           {
             loader: "style-loader" // creates style nodes from JS strings
           },
@@ -117,10 +108,5 @@ module.exports = {
         loader: "art-template-loader"
       }
     ]
-  },
-  resolve: {
-    alias: {
-      'vue$': 'vue/dist/vue.common.js'
-    }
   }
 };

@@ -1,6 +1,6 @@
 const merge = require("webpack-merge");
 const common = require("./webpack.common.js");
-const webpack = require('webpack');
+// const webpack = require('webpack');
 const config = require('../config').config;
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
@@ -22,20 +22,20 @@ module.exports = merge(common, {
     host,
     port,
     proxy,
-    contentBase: "./dist",
-    hot: true,
+    contentBase: "../src",
+    // hot: true,
     quiet: true,
     overlay: {
       errors: true, // 编译出现错误时，错误直接贴到页面上
     }
   },
   plugins: [
-    new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
+    // new webpack.NamedModulesPlugin(),
+    // new webpack.HotModuleReplacementPlugin(),
     new FriendlyErrorsWebpackPlugin({
       compilationSuccessInfo: {
         messages: ['你的程序运行在：' + host + ':' + port],
-        notes: ['~^o^~ 编码愉快~~~']
+        notes: ['~^o^~']
       },
       clearConsole: true
     })
