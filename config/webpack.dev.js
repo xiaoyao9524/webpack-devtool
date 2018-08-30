@@ -6,6 +6,7 @@ const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 const port = config.devServer.port || 8080;
 const host = config.devServer.host || 'localhost';
+const publicPath = config.publicPath || '';
 const api = config.proxy || [];
 let proxy = {};
 for (let i = 0; i < api.length; i++) {
@@ -18,6 +19,9 @@ for (let i = 0; i < api.length; i++) {
 module.exports = merge(common, {
   mode: "development",
   devtool: "inline-source-map",
+  output: {
+    publicPath
+  },
   devServer: {
     host,
     port,

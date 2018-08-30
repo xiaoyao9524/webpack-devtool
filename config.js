@@ -9,6 +9,7 @@
 * */
 
 exports.config = {
+  publicPath: '/',
   devServer: {
     host: 'localhost',
     port: 8080 // 端口
