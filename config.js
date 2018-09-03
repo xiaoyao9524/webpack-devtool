@@ -12,12 +12,12 @@ exports.config = {
   publicPath: '/',
   devServer: {
     host: 'localhost',
-    port: 8080 // 端口
+    port: 8080
   },
   pageConfig: [
     {
       entryName: "index",
-      entryPath: "./src/index.main.js",
+      entryPath: "./src/js/index.main.js",
       filename: "index.html",
       template: "./src/index.html",
       chunks: ['index', 'common']

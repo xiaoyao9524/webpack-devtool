@@ -5,8 +5,8 @@
 // }
 
 import 'babel-polyfill';
-import "./reset.scss";
-import "./index.scss";
+import "../scss/reset.scss";
+import "./scss/index.scss";
 import $ from 'jquery';
 import _ from 'lodash';
 import axios from 'axios';
