@@ -1,10 +1,10 @@
+// 移动端调试
 // if (process.env.NODE_ENV === 'development') {
 //   let VConsole = require('vConsole');
 //   new VConsole();
 // }
 
-// 测试其它部分
-// 首页的入口文件
+import 'babel-polyfill';
 import "./reset.scss";
 import "./index.scss";
 import $ from 'jquery';
@@ -13,7 +13,7 @@ import axios from 'axios';
 
 let app = require('./index.art');
 let html = app({
-  testMsg: '测试模板引擎消息'
+  testMsg: '测试模板引擎'
 });
 document.getElementById('test').innerHTML = html;
 
@@ -24,16 +24,18 @@ btn.on("click", function () {
 });
 
 console.log(
-    _.join(['index', '测试', 'lodash'], ' ')
+    _.join(['测试', 'lodash', '信息'], ' ')
 );
 console.log('当前环境', process.env.NODE_ENV); // development or production
 
-axios.get('/index/recommend.json')
-    .then((res) => {
-      console.log('跨域测试：', res.data);
-    })
-    .catch((err) => {
-      console.log('跨域测试失败，请确认当前是否在开发环境：', err)
-    });
+async function testAjax () {
+ try {
+   let {data} = await axios.get('/index/recommend.json');
+   console.log('跨域测试：', data.list);
+ }catch (err) {
+   console.log('跨域测试失败，请确认当前是否在开发环境：', err)
+ }
+}
+testAjax();
 
 

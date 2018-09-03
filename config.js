@@ -33,8 +33,7 @@ exports.config = {
   proxy: [
     {
       target: 'https://www.bilibili.com',
-      path: '/index' // ,
-      // changeOrigin: true // 不传默认为true
+      path: '/index/recommend.json'
     }
   ]
 };
