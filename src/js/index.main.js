@@ -6,12 +6,12 @@
 
 import 'babel-polyfill';
 import "../scss/reset.scss";
-import "./scss/index.scss";
+import "../scss/index.scss";
 import $ from 'jquery';
 import _ from 'lodash';
 import axios from 'axios';
 
-let app = require('./index.art');
+let app = require('../index.art');
 let html = app({
   testMsg: '测试模板引擎'
 });

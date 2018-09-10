@@ -1,8 +1,11 @@
 const path = require("path");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+// const config = require('../config').config;
+// console.log(config);
 // 配置入口文件和plugins
 const projectConfig = require('../config');
+
 const config = projectConfig.config.pageConfig;
 let entry = {};
 let plugins = [
@@ -42,7 +45,8 @@ module.exports = {
   output: {
     filename: "static/js/[name].[hash].bundle.js",
     chunkFilename: "static/js/[name].[hash].bundle.js",
-    path: path.resolve(__dirname, "../", "dist")
+    path: path.resolve(__dirname, "../", "dist"),
+    publicPath: projectConfig.config.publicPath || '/'
   },
   plugins,
   module: {
@@ -70,10 +74,10 @@ module.exports = {
             loader: "css-loader" // translates CSS into CommonJS
           },
           {
-            loader: "sass-loader" // compiles Sass to CSS
+            loader: 'postcss-loader'
           },
           {
-            loader: 'postcss-loader'
+            loader: "sass-loader" // compiles Sass to CSS
           }
         ]
       },
@@ -86,6 +90,19 @@ module.exports = {
               limit: 10000,
               name: '[hash:7].[ext]',
               outputPath: 'static/img/'
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              limit: 10000,
+              name: '[hash:7].[ext]',
+              outputPath: 'static/video/'
             }
           }
         ]

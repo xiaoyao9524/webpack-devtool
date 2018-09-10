@@ -7,6 +7,7 @@ const port = config.devServer.port || 8080;
 const host = config.devServer.host || 'localhost';
 const publicPath = config.publicPath || '';
 const api = config.proxy || [];
+
 let proxy = {};
 for (let i = 0; i < api.length; i++) {
   let item = api[i];
@@ -15,6 +16,7 @@ for (let i = 0; i < api.length; i++) {
     target: item['target']
   }
 }
+
 module.exports = merge(common, {
   mode: "development",
   devtool: "inline-source-map",
