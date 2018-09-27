@@ -7,4 +7,3 @@ let test = $("#btn");
 test.on("click", function () {
   alert('im about.js');
 });
-å
