@@ -23,7 +23,7 @@ async function returnData () {
   let port = await findPort(configPort, configPort + 1000);
   let tipMsg = '';
   if (port !== configPort) {
-    tipMsg = `${configPort}端口已被占用, 开始尝试${port}端口。`;
+    tipMsg = `${configPort}端口已被占用, 正在开启${port}端口。`;
     console.log(tipMsg)
   }
   let retData = merge(common, {
