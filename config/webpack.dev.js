@@ -1,17 +1,18 @@
 const merge = require("webpack-merge");
-const common = require("./webpack.common.js");
-const config = require('../config').config;
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const findPort = require('./FindPort');
+const common = require("./webpack.common.js");
+const config = require('../config');
 
-let configPort = config.devServer.port || 8080;
+// config中的配置
+const configPort = config.devServer.port || 8080;
 const host = config.devServer.host || 'localhost';
 const publicPath = config.publicPath || '';
-const api = config.proxy || [];
+const api = config.proxy.length ? config.proxy : [];
 
+// 转换proxy格式
 let proxy = {};
-for (let i = 0; i < api.length; i++) {
-  let item = api[i];
+for (let item of api) {
   proxy[item['path']] = {
     changeOrigin: item['changeOrigin'] || true,
     target: item['target']
@@ -20,7 +21,6 @@ for (let i = 0; i < api.length; i++) {
 
 async function returnData () {
   let port = await findPort(configPort, configPort + 1000);
-  console.log('111port: ', port);
   let tipMsg = '';
   if (port !== configPort) {
     tipMsg = `${configPort}端口已被占用, 开始尝试${port}端口。`;
@@ -48,7 +48,9 @@ async function returnData () {
       // new webpack.HotModuleReplacementPlugin(),
       new FriendlyErrorsWebpackPlugin({
         compilationSuccessInfo: {
-          messages: tipMsg ? [tipMsg, `你的程序运行在：${host}:${port}`] : [`你的程序运行在：${host}:${port}`],
+          messages: tipMsg ?
+              [tipMsg, `你的程序运行在：${host}:${port}`] :
+              [`你的程序运行在：${host}:${port}`],
           notes: ['~^o^~']
         },
         clearConsole: true

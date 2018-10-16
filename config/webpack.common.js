@@ -1,21 +1,18 @@
 const path = require("path");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-// const config = require('../config').config;
-// console.log(config);
 // 配置入口文件和plugins
 const projectConfig = require('../config');
 
-const config = projectConfig.config.pageConfig;
+const config = projectConfig.pageConfig;
 let entry = {};
 let plugins = [
   new CleanWebpackPlugin(["dist"], {
     root: path.resolve(__dirname, "../")
   })
 ];
-for (let i = 0; i < config.length; i++) {
+for (let item of config) {
   // entry
-  let item = config[i];
   entry[item['entryName']] = item['entryPath'];
   // plugins
   let pluginItem = {
@@ -46,7 +43,7 @@ module.exports = {
     filename: "static/js/[name].[hash].bundle.js",
     chunkFilename: "static/js/[name].[hash].bundle.js",
     path: path.resolve(__dirname, "../", "dist"),
-    publicPath: projectConfig.config.publicPath || '/'
+    publicPath: projectConfig.publicPath || '/'
   },
   plugins,
   module: {

@@ -8,7 +8,7 @@
   * @param chunks    Array    一般第一个为该文件的enterName，如果用到第三方库（比如jquery）则第二个为'common'
 * */
 
-exports.config = {
+module.exports = {
   publicPath: '/',
   devServer: {
     host: 'localhost',
