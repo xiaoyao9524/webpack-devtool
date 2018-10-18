@@ -10,6 +10,9 @@ import "../scss/index.scss";
 import $ from 'jquery';
 import _ from 'lodash';
 import axios from 'axios';
+import FastClick from 'fastclick';
+
+FastClick.attach(document.body);
 
 let app = require('../index.art');
 let html = app({
