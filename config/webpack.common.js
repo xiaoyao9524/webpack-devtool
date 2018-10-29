@@ -1,16 +1,11 @@
 const path = require("path");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+
 // 配置入口文件和plugins
 const projectConfig = require('../config');
-
 const config = projectConfig.pageConfig;
 let entry = {};
-let plugins = [
-  new CleanWebpackPlugin(["dist"], {
-    root: path.resolve(__dirname, "../")
-  })
-];
+let plugins = [];
 for (let item of config) {
   // entry
   entry[item['entryName']] = item['entryPath'];

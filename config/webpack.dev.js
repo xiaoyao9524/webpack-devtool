@@ -1,21 +1,24 @@
 const merge = require("webpack-merge");
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
-const findPort = require('./FindPort');
+const {findPort, getIPAdress} = require('./utils');
 const common = require("./webpack.common.js");
 const config = require('../config');
 
 // config中的配置
 const configPort = config.devServer.port || 8080;
-const host = config.devServer.host || 'localhost';
 const publicPath = config.publicPath || '';
-const api = config.proxy.length ? config.proxy : [];
 
-// 转换proxy格式
+// 判断并转换proxy格式
 let proxy = {};
-for (let item of api) {
-  proxy[item['path']] = {
-    changeOrigin: item['changeOrigin'] || true,
-    target: item['target']
+if (config.proxy) {
+  let apis = config.proxy;
+  if (apis.length) {
+    for (let item of apis) {
+      proxy[item['path']] = {
+        changeOrigin: item['changeOrigin'] || true,
+        target: item['target']
+      }
+    }
   }
 }
 
@@ -23,8 +26,8 @@ async function returnData () {
   let port = await findPort(configPort, configPort + 1000);
   let tipMsg = '';
   if (port !== configPort) {
-    tipMsg = `${configPort}端口已被占用, 正在开启${port}端口。`;
-    console.log(tipMsg)
+    console.log(`${configPort}端口已被占用, 正在尝试切换到${port}端口。`);
+    tipMsg = `${configPort}端口已被占用, 已为你开启${port}端口。`;
   }
   let retData = merge(common, {
     mode: "development",
@@ -33,7 +36,7 @@ async function returnData () {
       publicPath
     },
     devServer: {
-      host,
+      host: '0.0.0.0',
       port,
       proxy,
       contentBase: "../src",
@@ -44,13 +47,24 @@ async function returnData () {
       }
     },
     plugins: [
+      // 开启热更新：
       // new webpack.NamedModulesPlugin(),
       // new webpack.HotModuleReplacementPlugin(),
       new FriendlyErrorsWebpackPlugin({
         compilationSuccessInfo: {
           messages: tipMsg ?
-              [tipMsg, `你的程序运行在：${host}:${port}`] :
-              [`你的程序运行在：${host}:${port}`],
+              [
+                `你的程序运行在：`,
+                `本机地址:       localhost:${port}`,
+                `或者IP地址:     ${getIPAdress()}:${port}`,
+                '',
+                tipMsg
+              ] :
+              [
+                `你的程序运行在：`,
+                `本机地址:       localhost:${port}`,
+                `或者IP地址:     ${getIPAdress()}:${port}`
+              ],
           notes: ['~^o^~']
         },
         clearConsole: true
