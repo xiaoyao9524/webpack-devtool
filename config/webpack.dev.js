@@ -22,7 +22,7 @@ if (config.proxy) {
   }
 }
 
-async function returnData () {
+async function returnData() {
   let port = await findPort(configPort, configPort + 1000);
   let tipMsg = '';
   if (port !== configPort) {
