@@ -11,6 +11,8 @@ import $ from 'jquery';
 import _ from 'lodash';
 import axios from 'axios';
 import FastClick from 'fastclick';
+import Test from '@/util/testModule'
+console.log(Test);
 
 FastClick.attach(document.body);
 

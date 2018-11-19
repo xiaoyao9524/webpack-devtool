@@ -117,5 +117,10 @@ module.exports = {
         loader: "art-template-loader"
       }
     ]
+  },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, '../src')
+    }
   }
 };
