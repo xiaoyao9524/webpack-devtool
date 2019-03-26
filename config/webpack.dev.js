@@ -4,23 +4,9 @@ const {findPort, getIPAdress} = require('./utils');
 const common = require("./webpack.common.js");
 const config = require('../config');
 
-// config中的配置
+// config
 const configPort = config.devServer.port || 8080;
 const publicPath = config.publicPath || '';
-
-// 判断并转换proxy格式
-let proxy = {};
-if (config.proxy) {
-  let apis = config.proxy;
-  if (apis.length) {
-    for (let item of apis) {
-      proxy[item['path']] = {
-        changeOrigin: item['changeOrigin'] || true,
-        target: item['target']
-      }
-    }
-  }
-}
 
 async function returnData() {
   let port = await findPort(configPort, configPort + 1000);
@@ -38,7 +24,7 @@ async function returnData() {
     devServer: {
       host: '0.0.0.0',
       port,
-      proxy,
+      proxy: config.proxy || {},
       contentBase: "../src",
       // hot: true,
       quiet: true,

@@ -1,12 +1,24 @@
 {
     "presets": [
-        "env",
-        "es2015"
+        [
+            "@babel/preset-env", {
+                "modules": false,
+                "useBuiltIns": "usage",
+                "corejs": 3,
+                "targets": {
+                    "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
+                }
+            }
+        ]
     ],
     "plugins": [
-        "transform-runtime",
-        "babel-plugin-transform-regenerator",
-        "babel-plugin-transform-es2015-modules-commonjs",
-        "add-module-exports"
+        ["@babel/plugin-transform-runtime", {
+            "corejs": 3
+        }],
+        "@babel/plugin-transform-object-assign",
+        ["@babel/plugin-proposal-decorators", {
+            "legacy": true
+        }],
+        "@babel/plugin-proposal-class-properties"
     ]
 }

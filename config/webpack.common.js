@@ -35,8 +35,8 @@ module.exports = {
     }
   },
   output: {
-    filename: "static/js/[name].[hash].bundle.js",
-    chunkFilename: "static/js/[name].[hash].bundle.js",
+    filename: "static/js/[name].[hash].js",
+    chunkFilename: "static/js/[name].[hash].js",
     path: path.resolve(__dirname, "../", "dist"),
     publicPath: projectConfig.publicPath || '/'
   },
@@ -52,7 +52,7 @@ module.exports = {
         use: ["style-loader", "css-loader"]
       },
       {
-        test: [/\.js$/],
+        test: /\.js$/,
         exclude: /node_modules/,
         loader: "babel-loader"
       },

@@ -1,22 +1,25 @@
-// 移动端调试
-// if (process.env.NODE_ENV === 'development') {
-//   let VConsole = require('vConsole');
-//   new VConsole();
-// }
+// // 移动端调试
+// // if (process.env.NODE_ENV === 'development') {
+// //   let VConsole = require('vConsole');
+// //   new VConsole();
+// // }
 
 import 'babel-polyfill';
-import "../scss/reset.scss";
-import "../scss/index.scss";
+import "./scss/reset.scss";
+import "./scss/index.scss";
 import $ from 'jquery';
-import _ from 'lodash';
 import axios from 'axios';
+
 import FastClick from 'fastclick';
+FastClick.attach(document.body);
+
 import Test from '@/util/testModule'
 console.log(Test);
 
-FastClick.attach(document.body);
-
-let app = require('../index.art');
+const a = '哈哈';
+console.log(a);
+//
+let app = require('./index.art');
 let html = app({
   testMsg: '测试模板引擎'
 });
@@ -28,10 +31,10 @@ btn.on("click", function () {
   alert('im home.js!!');
 });
 
-console.log(
-    _.join(['测试', 'lodash', '信息'], ' ')
-);
 console.log('当前环境', process.env.NODE_ENV); // development or production
+
+
+testAjax();
 
 async function testAjax () {
  try {
@@ -41,6 +44,3 @@ async function testAjax () {
    console.log('跨域测试失败，请确认当前是否在开发环境：', err)
  }
 }
-testAjax();
-
-

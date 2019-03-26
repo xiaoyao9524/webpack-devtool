@@ -16,11 +16,11 @@ module.exports = {
   pageConfig: [
     {
       entryName: "index",
-      entryPath: "./src/js/index.main.js",
+      entryPath: "./src/index.main.js",
       filename: "index.html",
       template: "./src/index.html",
       chunks: ['index', 'common']
-    } ,
+    },
     {
       entryName: "test",
       entryPath: "./src/test.main.js",
@@ -29,10 +29,10 @@ module.exports = {
       chunks: ['test', 'common']
     }
   ],
-  proxy: [
-    {
+  proxy: {
+    '/index': {
       target: 'https://www.bilibili.com',
-      path: '/index/recommend.json'
+      changeOrigin: true
     }
-  ]
+  }
 };
