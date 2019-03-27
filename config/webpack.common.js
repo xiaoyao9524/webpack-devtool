@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 // 配置入口文件和plugins
 const projectConfig = require('../config');
 const config = projectConfig.pageConfig;
+
 let entry = {};
 let plugins = [];
 for (let item of config) {
@@ -22,6 +23,12 @@ for (let item of config) {
 
 module.exports = {
   entry,
+  output: {
+    filename: "static/js/[name].[hash].js",
+    chunkFilename: "static/js/[name].[hash].js",
+    path: path.resolve(__dirname, "../", "dist"),
+    publicPath: projectConfig.publicPath || '/'
+  },
   optimization: {
     splitChunks: {
       cacheGroups: {
@@ -33,12 +40,6 @@ module.exports = {
         }
       }
     }
-  },
-  output: {
-    filename: "static/js/[name].[hash].js",
-    chunkFilename: "static/js/[name].[hash].js",
-    path: path.resolve(__dirname, "../", "dist"),
-    publicPath: projectConfig.publicPath || '/'
   },
   plugins,
   module: {
@@ -123,4 +124,4 @@ module.exports = {
       '@': path.resolve(__dirname, '../src')
     }
   }
-};
+}

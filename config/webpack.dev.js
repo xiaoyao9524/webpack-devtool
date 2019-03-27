@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const merge = require("webpack-merge");
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const {findPort, getIPAdress} = require('./utils');
@@ -36,6 +37,9 @@ async function returnData() {
       // 开启热更新：
       // new webpack.NamedModulesPlugin(),
       // new webpack.HotModuleReplacementPlugin(),
+      new webpack.DefinePlugin({
+        currentEnv: JSON.stringify('test')
+      }),
       new FriendlyErrorsWebpackPlugin({
         compilationSuccessInfo: {
           messages: tipMsg ?
@@ -60,4 +64,6 @@ async function returnData() {
   return retData;
 }
 
-module.exports = returnData();
+module.exports = env => {
+  return returnData();
+};

@@ -1,10 +1,25 @@
-<h1>这是首页</h1>
-<p>本页使用了scss</p>
-<p class="test-art-template-message">{{testMsg}}</p>
-<p class="test-style">scss测试（如果此处为红色则为正常，否则请检查node-sass是否安装成功）</p>
-<button id="btn">测试js</button>
-<a href="./test.html">测试多页面跳转</a>
-<h3>测试图片引入(img)</h3>
-<img class="img-test" src="test.jpg" alt="">
-<h3>测试背景图片的引入(background)</h3>
-<section class="bg-test">这是一张背景图</section>
+<!DOCTYPE html>
+
+<div class="test-wrapper">
+  <p>测试模板引擎消息：{{testMsg}}</p>
+  <p class="test-style">scss测试:如果此处为红色则为正常，否则请检查node-sass是否安装成功</p>
+  
+  <div>
+    <button id="btn">测试js</button>
+  </div>
+  
+  <div>
+    <a href="./test.html">测试多页面跳转</a>
+  </div>
+  
+  <div class="test-img-wrapper clearfix">
+    <div class="left">
+      <h3>测试图片引入(img)</h3>
+      <img class="img-test" src="test.jpg" alt="">
+    </div>
+    <div class="right">
+      <h3>测试背景图片的引入与css前缀(background)</h3>
+      <section class="bg-test">这是一张背景图</section>
+    </div>
+  </div>
+</div>

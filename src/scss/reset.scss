@@ -33,3 +33,9 @@ dl{
 dd{
 	margin:0;
 }
+
+.clearfix:after {
+	display: block;
+	clear: both;
+	content: "";
+}

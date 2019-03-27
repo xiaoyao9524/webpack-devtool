@@ -6,8 +6,9 @@
   "license": "ISC",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --config config/webpack.dev.js",
-    "build": "webpack --config config/webpack.prod.js"
+    "dev": "webpack-dev-server --config config/webpack.dev.js --env.currentEnv=test",
+    "build": "webpack --config config/webpack.prod.js --env.currentEnv=prod",
+    "build:test": "webpack --config config/webpack.prod.js --env.currentEnv=test"
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",
