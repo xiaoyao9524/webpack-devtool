@@ -6,7 +6,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 */
 
-import 'babel-polyfill';
+import '@babel/polyfill';
 import "./scss/reset.scss";
 import "./scss/index.scss";
 import $ from 'jquery';

@@ -8,6 +8,13 @@ module.exports = env => {
   return merge(common, {
     mode: 'production',
     devtool: 'source-map',
+    stats: {
+      assets: true,
+      version: true,
+      builtAt: true,
+      performance: false,
+      warnings: false
+    },
     plugins: [
       new webpack.DefinePlugin({
         currentEnv: JSON.stringify(env.currentEnv)

@@ -24,8 +24,8 @@ for (let item of config) {
 module.exports = {
   entry,
   output: {
-    filename: "static/js/[name].[hash].js",
-    chunkFilename: "static/js/[name].[hash].js",
+    filename: "static/js/[chunkhash].js",
+    chunkFilename: "static/js/[chunkhash].js",
     path: path.resolve(__dirname, "../", "dist"),
     publicPath: projectConfig.publicPath || '/'
   },

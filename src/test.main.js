@@ -1,5 +1,5 @@
 // 测试页的入口文件
-import 'babel-polyfill';
+import '@babel/polyfill';
 import "./scss/reset.scss";
 import "./scss/index.scss";
 import $ from 'jquery'
