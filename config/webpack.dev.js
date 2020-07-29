@@ -1,5 +1,5 @@
 const webpack = require('webpack');
-const merge = require("webpack-merge");
+const {merge} = require("webpack-merge");
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const {findPort, getIPAdress} = require('./utils');
 const common = require("./webpack.common.js");
